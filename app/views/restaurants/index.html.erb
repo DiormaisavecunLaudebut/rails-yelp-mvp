@@ -1,0 +1,21 @@
+<%= render 'navbar' %>
+  <div class="container my-5">
+
+<% @restaurants.each do |restaurant| %>
+  <div class="d-flex">
+    <h3><%= link_to restaurant.name, restaurant_path(restaurant) %></h3>
+      <%= link_to edit_restaurant_path(restaurant) do %>
+        <i class="fas fa-pencil-alt ml-3"></i>
+      <% end %>
+      <%= link_to restaurant_path(restaurant), method: :delete, data: { confirm: "Are you sure?" } do %>
+        <i class="far fa-trash-alt ml-3"></i>
+      <% end %>
+  </div>
+
+  <ul>
+    <li><%= restaurant.category %></li>
+    <li><%= restaurant.address %></li>
+    <li><%= restaurant.phone %></li>
+  </ul>
+<% end %>
+</div>

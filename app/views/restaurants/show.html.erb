@@ -1,0 +1,21 @@
+<%= render 'navbar' %>
+<div class="container">
+  <h1><%= @restaurant.name %></h1>
+  <ul>
+    <li><%= @restaurant.category %></li>
+    <li><%= @restaurant.address %></li>
+    <li><%= @restaurant.phone %></li>
+  </ul>
+  <% @restaurant.reviews.each do |review| %>
+    <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title"><%= '⭐️' * review.rating %></h5>
+      <p class="card-text"><%= review.content %></p>
+    </div>
+  </div>
+  <% end %>
+  <p> <%= link_to 'Leave a review', new_restaurant_review_path(@restaurant) %></p>
+
+  <%= link_to 'Back to list', restaurants_path %>
+
+</div>
